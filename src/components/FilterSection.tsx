@@ -1,5 +1,5 @@
 import { FaMagic } from "react-icons/fa";
-import { setBrightness, setBlackAndWhite, setContrast, setSaturate, setSepia } from '../features/filters/filtersSlice'
+import { setBrightness, setBlackAndWhite, setContrast, setSaturate, setSepia, setOverlayText } from '../features/filters/filtersSlice'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { resetAll } from '../features/filters/filtersSlice'
@@ -63,6 +63,16 @@ function FilterSection() {
                         )
                     })
                 }
+            </div>
+            <div className='flex justify-between flex-col gap-2 mt-[40px]'>
+                <div className='flex gap-3 items-center'>
+                    <FaMagic />
+                    <span className="font-bold">Text</span>
+                </div>
+                <div>Content</div>
+                <input type="text" onChange={(e) => {
+                    dispatch(setOverlayText(e.target.value))
+                }} className="w-1/2 h-[30px] rounded-[2px] px-2" placeholder="Overlay Text" />
             </div>
         </div>
     )

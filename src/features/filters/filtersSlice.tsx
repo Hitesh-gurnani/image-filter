@@ -7,6 +7,7 @@ interface Filters {
     sepia: number;
     blackandwhite: number;
     imageUrl: string;
+    overlaytext?: string;
 }
 
 interface FiltersState extends Filters {
@@ -20,6 +21,7 @@ const initialState: FiltersState = {
     sepia: 0,
     blackandwhite: 0,
     imageUrl: 'https://picsum.photos/id/100/300/200',
+    overlaytext: '',
     recents: [],
 };
 
@@ -45,6 +47,9 @@ const filtersSlice = createSlice({
         setImageUrl: (state, action: PayloadAction<string>) => {
             state.imageUrl = action.payload;
         },
+        setOverlayText: (state, action: PayloadAction<string>) => {
+            state.overlaytext = action.payload;
+        },
         resetAll: (state) => {
             state.blackandwhite = 0;
             state.contrast = 100;
@@ -66,7 +71,8 @@ export const {
     setBlackAndWhite,
     setImageUrl,
     resetAll,
-    addRecent
+    addRecent,
+    setOverlayText
 } = filtersSlice.actions;
 
 export default filtersSlice.reducer;
